@@ -33,7 +33,7 @@ classifier.add(Dense(units=1,activation='sigmoid',kernel_initializer='uniform'))
 classifier.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
 
 # fitting the model
-classifier.fit(X_train,y_train,batch_size=10,epochs=100)
+history = classifier.fit(X_train,y_train,batch_size=10,epochs=100,validation_data=(X_test,y_test))
 
 # predicting the result
 y_pred = classifier.predict(X_test)
@@ -45,3 +45,11 @@ cm = confusion_matrix(y_test,y_pred)
 # accuracy of the model
 acc = accuracy_score(y_test,y_pred)
 print("Accuracy: {:.2f} %".format(acc*100))
+
+# visualising the accuracy on each epoch
+plt.figure(0)
+plt.plot(history.history['accuracy'],label='training accuracy')
+plt.plot(history.history['val_accuracy'],label='val_accuracy')
+plt.xlabel('epochs')
+plt.ylabel('accuracy')
+plt.legend()
