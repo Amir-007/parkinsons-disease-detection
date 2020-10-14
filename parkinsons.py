@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-# exrtracting data
+# extracting data
 dataset = pd.read_csv('parkinsons.csv')
 X = dataset.iloc[: ,~dataset.columns.isin(['status', 'name','Index'])].values
 y = dataset['status'].values
