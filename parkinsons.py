@@ -18,7 +18,7 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
 
-#importing libraries for artificial neaural network
+#importing libraries for artificial neural network
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
